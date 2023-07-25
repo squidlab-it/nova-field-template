@@ -11,7 +11,7 @@ use Squidlab\NovaFieldTemplate\Traits\LoadsTranslations;
 
 class FieldServiceProvider extends ServiceProvider
 {
-    public const FIELD_NAME = 'vue3-field';
+    public const FIELD_NAME = 'nova-field-template';
 
     use LoadsTranslations;
     use LoadsConfigs;

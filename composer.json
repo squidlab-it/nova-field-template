@@ -30,6 +30,8 @@
   "require-dev": {
     "laravel/nova": "~4.0",
     "laravel/pint": "^1.9",
+    "nunomaduro/larastan": "^2.0",
+    "orchestra/testbench": "^8.5",
     "pestphp/pest": "^2.9"
   },
   "autoload": {
