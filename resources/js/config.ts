@@ -1,7 +1,9 @@
 import packageJson from '@root/package.json';
 
 export const config = {
-  rootClass: packageJson.name,
+  rootClass:
+    packageJson.name.toLowerCase().match(/(\/|^)([^/]+)$/)?.[2] ??
+    'not-defined',
   componentName:
     packageJson.name
       .toLowerCase()

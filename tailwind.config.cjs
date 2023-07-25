@@ -8,5 +8,5 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-  important: `.${packageJson.name}`,
+  important: `.${packageJson.name.toLowerCase().match(/(\/|^)([^/]+)$/)?.[2] ?? 'not-defined'}`,
 };
