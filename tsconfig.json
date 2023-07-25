@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "es2020",
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "./resources/js/*"
+      ],
+      "@root/*": [
+        "./*"
+      ],
+      "@css/*": [
+        "./resources/css/*"
+      ]
+    },
+    "isolatedModules": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "dist",
+    "declarationDir": "dist",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "resources/js/**/*"
+  ]
+}

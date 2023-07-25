@@ -1,0 +1,67 @@
+name: 'ESLint'
+
+on:
+  push:
+    branches-ignore:
+      - release
+  pull_request:
+    branches-ignore:
+      - release
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+env:
+  SEGMENT_DOWNLOAD_TIMEOUT_MIN: 3
+
+jobs:
+  files-changed:
+    name: 'Detect file changes'
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    outputs:
+      node: ${{ steps.changes.outputs.node }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check for file changes
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          token: ${{ github.token }}
+          filters: .github/file-filters.yml
+
+  eslint:
+    needs: files-changed
+    if: needs.files-changed.outputs.node == 'true'
+
+    name: 'ESLint'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run install
+        run: |
+          yarn install
+
+      - name: ESLint
+        run: |
+          yarn lint:fix
+
+      - name: Create commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore(linter): eslint fix"

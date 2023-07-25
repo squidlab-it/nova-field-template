@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+branch_changed=$3
+
+if [ $branch_changed != "1" ]; then
+  exit 0;
+fi
+
+new_branch=`git branch --show-current`
+
+# copy root gitignore
+root_gitignore=.husky/gitignores/.gitignore
+cp -f $root_gitignore ./
+
+# add branch-specific gitignore
+branch_gitignore=.husky/gitignores/.gitignore_${new_branch}
+if [ -f "$branch_gitignore" ]; then
+  echo $'\n\n'"# -------------------------------" >> .gitignore
+  echo "# Branch ::: ${new_branch}" >> .gitignore
+  echo "# -------------------------------" >> .gitignore
+  cat $branch_gitignore >> .gitignore
+fi
+
+# add negated-branch gitignore
+for negated_gitignore in .husky/gitignores/.gitignore_!*; do
+    negated_branch=$(echo $negated_gitignore | sed -E 's/^.husky\/gitignores\/.gitignore_\!(.*)$/\1/')
+    if [[ "$negated_branch" != "$new_branch" ]]; then
+        echo $'\n\n'"# -------------------------------" >> .gitignore
+        echo "# Branch ::: !${negated_branch}" >> .gitignore
+        echo "# -------------------------------" >> .gitignore
+        cat $negated_gitignore >> .gitignore
+    fi
+done

@@ -1,0 +1,167 @@
+name: 'Build'
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+env:
+  SEGMENT_DOWNLOAD_TIMEOUT_MIN: 3
+
+jobs:
+  files-changed:
+    name: 'Detect file changes'
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    outputs:
+      phpstan: ${{ steps.changes.outputs.phpstan }}
+      pest: ${{ steps.changes.outputs.pest }}
+      node: ${{ steps.changes.outputs.node }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check for file changes
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          token: ${{ github.token }}
+          filters: .github/file-filters.yml
+
+  phpstan:
+    needs: files-changed
+    if: needs.files-changed.outputs.phpstan == 'true'
+
+    name: 'Larastan'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+
+      - name: Install composer dependencies
+        uses: ramsey/composer-install@v2
+        env:
+          COMPOSER_AUTH: '{"github-oauth": { "github.com": "${{ secrets.COMPOSER_GITHUB_TOKEN }}"},"http-basic": { "nova.laravel.com": { "username": "${{ secrets.COMPOSER_NOVA_EMAIL }}", "password": "${{ secrets.COMPOSER_NOVA_PASSWORD }}" }} }'
+
+      - name: Run PHPStan
+        run: ./vendor/bin/phpstan --error-format=github
+
+  pest:
+    needs: files-changed
+    if: needs.files-changed.outputs.pest == 'true'
+
+    name: 'Pest'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+
+      - name: Install composer dependencies
+        uses: ramsey/composer-install@v2
+        env:
+          COMPOSER_AUTH: '{"github-oauth": { "github.com": "${{ secrets.COMPOSER_GITHUB_TOKEN }}"},"http-basic": { "nova.laravel.com": { "username": "${{ secrets.COMPOSER_NOVA_EMAIL }}", "password": "${{ secrets.COMPOSER_NOVA_PASSWORD }}" }} }'
+
+      - name: Run Pest
+        run: ./vendor/bin/pest
+
+  build:
+    needs: [phpstan, pest]
+    if: always() &&
+      (needs.phpstan.result == 'success' || needs.phpstan.result == 'skipped') &&
+      (needs.pest.result == 'success' || needs.pest.result == 'skipped')
+
+    name: 'Vue Build'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Setup git user
+        run: |
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Setup release branch
+        run: |
+          export BRANCH_NAME=release
+          echo "branch_name=$BRANCH_NAME" >> "$GITHUB_ENV"
+          git checkout -b $BRANCH_NAME origin/$BRANCH_NAME
+
+      - name: Merge changes
+        run: |
+          git merge --no-commit main
+
+      - name: Install composer dependencies
+        uses: ramsey/composer-install@v2
+        env:
+          COMPOSER_AUTH: '{"github-oauth": { "github.com": "${{ secrets.COMPOSER_GITHUB_TOKEN }}"},"http-basic": { "nova.laravel.com": { "username": "${{ secrets.COMPOSER_NOVA_EMAIL }}", "password": "${{ secrets.COMPOSER_NOVA_PASSWORD }}" }} }'
+
+      - name: Install node dependencies
+        run: |
+          yarn install
+
+      - name: Install nova as peer dependency
+        run: |
+          yarn nova:install
+
+      - name: Build production bundle
+        run: |
+          yarn build
+
+      - name: Create commit
+        run: |
+          git add .
+          git commit --allow-empty -m "chore(build): production build"
+
+      - name: Push changes on git
+        run: |
+          git push --set-upstream origin ${{ env.branch_name }}

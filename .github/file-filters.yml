@@ -1,0 +1,32 @@
+# Used by the action https://github.com/dorny/paths-filter
+
+node:
+  - 'resources/js/**'
+  - 'resources/css/**'
+  - 'resources/lang/**'
+  - 'package.json'
+  - 'yarn.lock'
+  - 'vite.config.cjs'
+  - 'tailwind.config.cjs'
+  - 'postcss.config.cjs'
+  - 'tsconfig.json'
+  - '.prettierrc'
+  - '.eslintrc.cjs'
+
+php: &php
+  - 'src/**.php'
+  - 'config/**.php'
+  - 'routes/**.php'
+
+phpstan:
+  - *php
+  - 'phpstan.neon.dist'
+
+pint:
+  - *php
+  - 'pint.json'
+
+phpunit:
+  - *php
+  - 'phpunit.xml'
+  - 'phpunit.xml.dist'

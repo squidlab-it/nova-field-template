@@ -1,0 +1,24 @@
+/node_modules
+yarn-error.log
+
+/vendor
+composer.lock
+
+.npmrc
+auth.json
+
+.DS_Store
+Thumbs.db
+
+.idea
+.vscode
+.history
+
+phpunit.xml
+.phpunit.result.cache
+
+
+# -------------------------------
+# Branch ::: !release
+# -------------------------------
+/dist

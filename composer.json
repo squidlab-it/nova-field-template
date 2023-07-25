@@ -1,0 +1,66 @@
+{
+  "name": "squidlab-it/nova-field-template",
+  "description": "Template for creating your own Laravel Nova fields.",
+  "keywords": [
+    "squidlab",
+    "laravel",
+    "nova",
+    "field",
+    "template",
+    "vue3",
+    "typescript"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "SquidLab",
+      "email": "info@squidlab.it",
+      "role": "Web Agency"
+    },
+    {
+      "name": "Roberto Negro",
+      "email": "robertonegro@squidlab.it",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "outl1ne/nova-translations-loader": "^5.0"
+  },
+  "require-dev": {
+    "laravel/nova": "~4.0",
+    "laravel/pint": "^1.9",
+    "pestphp/pest": "^2.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "Squidlab\\NovaFieldTemplate\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Squidlab\\NovaFieldTemplate\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Squidlab\\NovaFieldTemplate\\Providers\\FieldServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://nova.laravel.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
