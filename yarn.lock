@@ -455,10 +455,10 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.3.0.tgz#f5635b36fc0dad96ef1e542a302cd914230188c0"
   integrity sha512-IthPJsJR85GhOkp3Hvp8zFOPK5ynKn6STyHa/WZpioK7E1aYDiBzpqQPrngc14DszIUkIrdd3k9Iu0XSzlP/1w==
 
-"@squidlab/nova-vue3-helper@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@squidlab/nova-vue3-helper/-/nova-vue3-helper-1.0.1.tgz#17de4c9791c4f1c54e9de89bfaa10145f4643325"
-  integrity sha512-H9Dt4j/DLuH/mAUPB+6c/J83TYeU73muDsIxXftPslrsrOuEDMKgsWOS8mVeHrmlFLShoBehtTSV2OR3fNAj7A==
+"@squidlab/nova-vue3-helper@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@squidlab/nova-vue3-helper/-/nova-vue3-helper-1.0.2.tgz#ef08dc276c2ecb35ffddd61f633ffc151f5b586d"
+  integrity sha512-guda1KPQAO/jU+pq5oYydg2SWGbhsOQ0cZ8uH2aYqNO06MuHzPsJlHRvjx6SXVu9tkS1UBxXyUrV1eST8nv+ug==
   dependencies:
     axios "^1.4.0"
     form-backend-validation "^2.4.0"

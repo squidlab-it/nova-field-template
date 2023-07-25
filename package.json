@@ -81,7 +81,7 @@
     "vue": "^3.3.4"
   },
   "dependencies": {
-    "@squidlab/nova-vue3-helper": "^1.0.1",
+    "@squidlab/nova-vue3-helper": "^1.0.2",
     "axios": "^1.4.0",
     "lodash": "^4.17.21",
     "vuex": "^4.1.0"
