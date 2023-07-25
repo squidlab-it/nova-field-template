@@ -10,7 +10,7 @@ use Squidlab\NovaFieldTemplate\Traits\FieldHandlesMeta;
 use Squidlab\NovaFieldTemplate\Traits\FieldHandlesSerialization;
 use Squidlab\NovaFieldTemplate\Traits\FieldHandlesValidation;
 
-class Vue3Field extends \Laravel\Nova\Fields\Field
+class NovaFieldTemplate extends \Laravel\Nova\Fields\Field
 {
     use SupportsDependentFields;
     use FieldHandlesMeta;
