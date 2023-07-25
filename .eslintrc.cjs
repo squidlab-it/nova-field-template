@@ -7,13 +7,13 @@ module.exports = {
     jest: true,
   },
   extends: [
-      'eslint:recommended',
-      'plugin:vue/vue3-recommended',
-      '@vue/eslint-config-typescript/recommended',
-      "@vue/eslint-config-prettier"
+    'eslint:recommended',
+    'plugin:vue/vue3-recommended',
+    '@vue/eslint-config-typescript/recommended',
+    '@vue/eslint-config-prettier',
   ],
-    rules: {
-      'vue/no-v-text-v-html-on-component': 0,
-      'vue/no-v-html': 0
-    },
+  rules: {
+    'vue/no-v-text-v-html-on-component': 0,
+    'vue/no-v-html': 0,
+  },
 };
