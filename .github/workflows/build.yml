@@ -62,7 +62,7 @@ jobs:
       - name: Install composer dependencies
         uses: ramsey/composer-install@v2
         env:
-          COMPOSER_AUTH: '{"github-oauth": { "github.com": "${{ secrets.COMPOSER_GITHUB_TOKEN }}"},"http-basic": { "nova.laravel.com": { "username": "${{ secrets.COMPOSER_NOVA_EMAIL }}", "password": "${{ secrets.COMPOSER_NOVA_PASSWORD }}" }} }'
+          COMPOSER_AUTH: '{"github-oauth": { "github.com": "${{ secrets.GH_TOKEN }}"},"http-basic": { "nova.laravel.com": { "username": "${{ secrets.NOVA_EMAIL }}", "password": "${{ secrets.NOVA_LICENSE }}" }} }'
 
       - name: Run PHPStan
         run: ./vendor/bin/phpstan --error-format=github
@@ -91,7 +91,7 @@ jobs:
       - name: Install composer dependencies
         uses: ramsey/composer-install@v2
         env:
-          COMPOSER_AUTH: '{"github-oauth": { "github.com": "${{ secrets.COMPOSER_GITHUB_TOKEN }}"},"http-basic": { "nova.laravel.com": { "username": "${{ secrets.COMPOSER_NOVA_EMAIL }}", "password": "${{ secrets.COMPOSER_NOVA_PASSWORD }}" }} }'
+          COMPOSER_AUTH: '{"github-oauth": { "github.com": "${{ secrets.GH_TOKEN }}"},"http-basic": { "nova.laravel.com": { "username": "${{ secrets.NOVA_EMAIL }}", "password": "${{ secrets.NOVA_LICENSE }}" }} }'
 
       - name: Run Pest
         run: ./vendor/bin/pest
@@ -143,7 +143,7 @@ jobs:
       - name: Install composer dependencies
         uses: ramsey/composer-install@v2
         env:
-          COMPOSER_AUTH: '{"github-oauth": { "github.com": "${{ secrets.COMPOSER_GITHUB_TOKEN }}"},"http-basic": { "nova.laravel.com": { "username": "${{ secrets.COMPOSER_NOVA_EMAIL }}", "password": "${{ secrets.COMPOSER_NOVA_PASSWORD }}" }} }'
+          COMPOSER_AUTH: '{"github-oauth": { "github.com": "${{ secrets.GH_TOKEN }}"},"http-basic": { "nova.laravel.com": { "username": "${{ secrets.NOVA_EMAIL }}", "password": "${{ secrets.NOVA_LICENSE }}" }} }'
 
       - name: Install node dependencies
         run: |
