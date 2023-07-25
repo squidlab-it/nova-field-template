@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/squidlab-it/nova-field-template/compare/v1.0.0...v1.0.1) (2023-07-25)
+
+
+### Bug Fixes
+
+* changed field name ([cd40f3f](https://github.com/squidlab-it/nova-field-template/commit/cd40f3f457b95881a6bb3e6339f57c5504ddb22e))
+
 # 1.0.0 (2023-07-25)
 
 
