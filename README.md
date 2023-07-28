@@ -1,4 +1,6 @@
 # Nova Field Template
+![nova-field-template](nova-field-template.jpg)
+
 > An opinionated template for creating your customized fields for Laravel Nova 4 with Typescript and Vue 3's Composition API.
 
 This template aims to speed up the development of Laravel Nova fields by setting up all the relevant stuff that is common on all our packages. This is an opinionated template: we implemented what we usually need in our projects. Feel free to change it to your needs.
