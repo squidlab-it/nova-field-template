@@ -41,28 +41,33 @@ trait LoadsRoutes
         $fieldName = Str::slug(FieldServiceProvider::FIELD_NAME);
 
         return match ($namespace) {
-            'nova-api' => [
+            'nova-field-api' => [
                 'domain' => config('nova.domain', null),
                 'as' => 'nova.api.'.$fieldName.'.',
-                'prefix' => '/nova-api'.'/'.$fieldName,
+                'prefix' => '/'.$fieldName.'-api',
                 'middleware' => 'nova:api',
                 'excluded_middleware' => [SubstituteBindings::class],
+            ],
+            'field-api' => [
+                'as' => 'api.'.$fieldName.'.',
+                'prefix' => '/'.$fieldName.'-api',
+                'middleware' => 'api',
             ],
             'nova-web-public' => [
                 'domain' => config('nova.domain', null),
                 'as' => 'nova.pages.'.$fieldName.'.',
-                'prefix' => Nova::path().'/'.$fieldName,
+                'prefix' => Nova::path(),
                 'middleware' => 'nova',
             ],
             'nova-web' => [
                 'domain' => config('nova.domain', null),
                 'as' => 'nova.pages.'.$fieldName.'.',
-                'prefix' => Nova::path().'/'.$fieldName,
+                'prefix' => Nova::path(),
                 'middleware' => 'nova:api',
             ],
             'api' => [
                 'as' => 'api.'.$fieldName.'.',
-                'prefix' => '/api'.'/'.$fieldName,
+                'prefix' => '/api',
                 'middleware' => 'api',
             ],
             'web' => [
