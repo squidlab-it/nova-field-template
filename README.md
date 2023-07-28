@@ -33,7 +33,7 @@ As this is only a template, you have to rename the default component name and na
 - Change the package name, the namespace and the autoload FQCNs in the `composer.json` file
 - Change the namespace of all PHP files under `./src`
 - Rename the field file `./src/NovaFieldTemplate.php` and its class name with the name of your field 
-- Change the const `FIELD_NAME` in `./src/Providers/FieldServiceProvider` with your field name in kebab-case (this should match your `package.json` package name, without the author/organization part (e.g, from `@squidlab/nova-field-template` to `nova-field-template`). 
+- Change the const `FIELD_NAME` in `./src/Providers/FieldServiceProvider` with your field name in kebab-case. This should match your `package.json` package name, without the author/organization part (e.g, from `@squidlab/nova-field-template` to `nova-field-template`). 
 
 When done, execute following commands:
 
