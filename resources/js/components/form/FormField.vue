@@ -62,6 +62,12 @@
           >
         </div>
 
+        <div class="flex items-center justify-center my-2">
+          <DefaultButton size="xs" @click.prevent="onApiRequest"
+            >API Request</DefaultButton
+          >
+        </div>
+
         <HelpText v-if="shouldShowErrors" class="mt-2 help-text-error">
           {{ firstError }}
         </HelpText>
@@ -135,6 +141,14 @@ const getInputValue = () => {
     return 0;
   }
   return num;
+};
+
+const onApiRequest = async () => {
+  const res = await Nova.request().get<{
+    message: string;
+  }>(`/${config.rootClass}-api/ping`);
+
+  Nova.success(`Received response: "${res.data.message}"`);
 };
 
 const onInputChange = () => {
