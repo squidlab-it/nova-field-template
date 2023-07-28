@@ -1,3 +1,7 @@
 {
-    "nova-field-template.name": "Vue3 Field"
+  "API Request": "API Request",
+  "Current theme: :theme": "Current theme: :theme",
+  "Light": "Light",
+  "Dark": "Dark",
+  "Received response: :message": "Received response: :message"
 }

@@ -62,6 +62,19 @@
           >
         </div>
 
+        <div class="flex items-center justify-center my-2">
+          <DefaultButton size="xs" @click.prevent="onApiRequest">
+            {{ __('API Request') }}
+          </DefaultButton>
+          <div class="ml-2 text-xs text-gray-400 dark:text-gray-500">
+            {{
+              __('Current theme: :theme', {
+                theme: theme === 'light' ? __('Light') : __('Dark'),
+              })
+            }}
+          </div>
+        </div>
+
         <HelpText v-if="shouldShowErrors" class="mt-2 help-text-error">
           {{ firstError }}
         </HelpText>
@@ -79,7 +92,11 @@
 <script lang="ts" setup>
 import { defineProps, ref } from 'vue';
 import type { FieldEmitFn } from '@squidlab/nova-vue3-helper';
-import { useFormField, useLocalization } from '@squidlab/nova-vue3-helper';
+import {
+  useFormField,
+  useLocalization,
+  useTheme,
+} from '@squidlab/nova-vue3-helper';
 import { config } from '@/config';
 import { FieldProps } from '@/types/field-props';
 import { Value } from '@/types/value';
@@ -114,6 +131,8 @@ const {
   emit
 );
 
+const theme = useTheme();
+
 const input = ref<HTMLInputElement>();
 
 const onDecrement = () => {
@@ -135,6 +154,18 @@ const getInputValue = () => {
     return 0;
   }
   return num;
+};
+
+const onApiRequest = async () => {
+  const res = await Nova.request().get<{
+    message: string;
+  }>(`/${config.rootClass}-api/ping`);
+
+  Nova.success(
+    __(`Received response: :message`, {
+      message: res.data.message,
+    })
+  );
 };
 
 const onInputChange = () => {
