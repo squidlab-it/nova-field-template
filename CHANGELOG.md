@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/squidlab-it/nova-field-template/compare/v1.0.1...v1.1.0) (2023-07-28)
+
+
+### Features
+
+* **routes:** changed routes namespace presets ([20d875b](https://github.com/squidlab-it/nova-field-template/commit/20d875bb1a7276fc1aca4f8bdd1fa761eedac470))
+
 ## [1.0.1](https://github.com/squidlab-it/nova-field-template/compare/v1.0.0...v1.0.1) (2023-07-25)
 
 
