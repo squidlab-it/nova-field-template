@@ -73,7 +73,7 @@
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-vue": "^9.14.1",
+    "eslint-plugin-vue": "^9.16.1",
     "form-backend-validation": "^2.4.0",
     "husky": "^8.0.3",
     "laravel-nova-types": "^0.1.4",
