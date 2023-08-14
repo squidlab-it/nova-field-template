@@ -16,4 +16,5 @@ module.exports = {
     'vue/no-v-text-v-html-on-component': 0,
     'vue/no-v-html': 0,
   },
+  ignorePatterns: ['node_modules/', 'vendor/', 'dist/'],
 };
