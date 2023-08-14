@@ -18,7 +18,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue/dist/vue';
 import type { FieldEmitFn } from '@squidlab/nova-vue3-helper';
 import { useDetailField } from '@squidlab/nova-vue3-helper';
 import { Value } from '@/types/value';
