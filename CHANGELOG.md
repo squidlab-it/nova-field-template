@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/squidlab-it/nova-field-template/compare/v1.1.0...v1.1.1) (2023-08-14)
+
+
+### Bug Fixes
+
+* removed defineProps from imports ([87fd60f](https://github.com/squidlab-it/nova-field-template/commit/87fd60f778eb88f21b1bb1baa8a08804bf05cd8e))
+
 # [1.1.0](https://github.com/squidlab-it/nova-field-template/compare/v1.0.1...v1.1.0) (2023-07-28)
 
 
