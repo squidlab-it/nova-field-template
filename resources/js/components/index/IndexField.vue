@@ -9,7 +9,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue/dist/vue';
 import { useIndexField } from '@squidlab/nova-vue3-helper';
 import { FieldProps } from '@/types/field-props';
 import { Value } from '@/types/value';

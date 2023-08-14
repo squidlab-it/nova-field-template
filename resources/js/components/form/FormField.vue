@@ -90,7 +90,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, ref } from 'vue';
+import { ref } from 'vue';
 import type { FieldEmitFn } from '@squidlab/nova-vue3-helper';
 import {
   useFormField,
