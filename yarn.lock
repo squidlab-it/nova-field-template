@@ -898,10 +898,10 @@
     "@sigstore/protobuf-specs" "^0.2.0"
     tuf-js "^1.1.7"
 
-"@squidlab/nova-vue3-helper@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@squidlab/nova-vue3-helper/-/nova-vue3-helper-1.0.3.tgz#f33dd8991eb359c587d98db1b3337f061c231f0a"
-  integrity sha512-eh1jFA6fciM0wGQ5lzflXrzBPzFPo6Bte7qAxP7CgoIGah2W8aJmPzSIBKDP9XzPa7xOpdnYtSvHDtkPXT+7mg==
+"@squidlab/nova-vue3-helper@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@squidlab/nova-vue3-helper/-/nova-vue3-helper-1.1.0.tgz#9494ab76641b72bdb264efa974fe2982540ac10c"
+  integrity sha512-aB8n/vhzy0IJzCOFeh6DVhu6+o4fmSfSWL8qlGiAcDWMWivfZ38rmrH9BJ/tjikOYXzZHXK0HAFYoYxeHX8nuw==
   dependencies:
     axios "^1.4.0"
     form-backend-validation "^2.4.0"
