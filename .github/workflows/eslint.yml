@@ -62,6 +62,6 @@ jobs:
           yarn lint:fix
 
       - name: Create commit
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore(linter): eslint fix"
