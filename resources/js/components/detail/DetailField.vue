@@ -12,7 +12,11 @@
       </slot>
     </div>
     <div class="md:w-3/4 md:py-3 break-all lg:break-words">
-      <div>{{ value.counter }}</div>
+      <span
+        class="relative bg-primary-500 text-white dark:text-gray-900 rounded text-sm font-bold inline-flex items-center justify-center px-2 py-1 bg-primary-500"
+      >
+        {{ value.counter }}
+      </span>
     </div>
   </div>
 </template>
